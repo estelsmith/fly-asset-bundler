@@ -1,0 +1,20 @@
+{
+    "name": "estel-smith/fly-asset-bundler",
+    "description": "On-the-fly asset bundler for PHP",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "EstelSmith\\FlyAssetBundler\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Estel Smith",
+            "email": "estel.smith@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1"
+    }
+}
