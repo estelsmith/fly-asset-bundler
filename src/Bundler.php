@@ -20,8 +20,6 @@ class Bundler implements BundlerInterface
         }
 
         $diskPath = $sourceBundle->getDiskPath();
-        $webPath = $sourceBundle->getWebPath();
-
         if (!file_exists($diskPath)) {
             file_put_contents(
                 $diskPath,
@@ -31,7 +29,7 @@ class Bundler implements BundlerInterface
 
         return new GeneratedBundle(
             $diskPath,
-            $webPath,
+            $sourceBundle->getWebPath(),
             filemtime($diskPath)
         );
     }
