@@ -16,6 +16,11 @@ class ModifiedTimeOutputFilenameStrategy implements OutputFilenameStrategyInterf
      */
     private $extension;
 
+    /**
+     * @var string
+     */
+    private $filename = '';
+
     public function __construct(string $baseName, string $extension)
     {
         $this->baseName = $baseName;
@@ -24,6 +29,8 @@ class ModifiedTimeOutputFilenameStrategy implements OutputFilenameStrategyInterf
 
     public function getFilename(SourceBundleInterface $sourceBundle): string
     {
+        if ($this->filename) return $this->filename;
+
         $modifiedTimes = [];
 
         foreach ($sourceBundle->getFiles() as $file) {
@@ -38,7 +45,7 @@ class ModifiedTimeOutputFilenameStrategy implements OutputFilenameStrategyInterf
             implode('', $modifiedTimes)
         );
 
-        return sprintf(
+        return $this->filename = sprintf(
             '%s.%s.%s',
             $this->baseName,
             $hash,
