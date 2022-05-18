@@ -33,10 +33,12 @@ class Bundler implements BundlerInterface
             $outputFilename
         );
 
-        file_put_contents(
-            $diskPath,
-            implode("\n", $outputs)
-        );
+        if (!file_exists($diskPath)) {
+            file_put_contents(
+                $diskPath,
+                implode("\n", $outputs)
+            );
+        }
 
         return new GeneratedBundle(
             $diskPath,
