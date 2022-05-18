@@ -3,11 +3,12 @@
 namespace EstelSmith\FlyAssetBundler;
 
 use EstelSmith\FlyAssetBundler\Bundle\GeneratedBundle;
-use EstelSmith\FlyAssetBundler\Bundle\SourceBundle;
+use EstelSmith\FlyAssetBundler\Bundle\GeneratedBundleInterface;
+use EstelSmith\FlyAssetBundler\Bundle\SourceBundleInterface;
 
 class Bundler implements BundlerInterface
 {
-    public function bundle(SourceBundle $sourceBundle): GeneratedBundle
+    public function bundle(SourceBundleInterface $sourceBundle): GeneratedBundleInterface
     {
         $outputs = [];
 
