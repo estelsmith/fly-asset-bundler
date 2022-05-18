@@ -1,6 +1,6 @@
 {
     "name": "estel-smith/fly-asset-bundler",
-    "description": "On-the-fly asset bundler for PHP",
+    "description": "Asset bundler for PHP",
     "type": "library",
     "license": "MIT",
     "autoload": {
