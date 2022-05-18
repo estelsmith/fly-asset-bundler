@@ -20,12 +20,10 @@ class Bundler implements BundlerInterface
         }
 
         $diskPath = $sourceBundle->getDiskPath();
-        if (!file_exists($diskPath)) {
-            file_put_contents(
-                $diskPath,
-                implode("\n", $outputs)
-            );
-        }
+        file_put_contents(
+            $diskPath,
+            implode("\n", $outputs)
+        );
 
         return new GeneratedBundle(
             $diskPath,
