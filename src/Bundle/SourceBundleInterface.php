@@ -14,4 +14,7 @@ interface SourceBundleInterface
      * @return array<string>
      */
     public function getFiles(): array;
+
+    public function getDiskPath(): string;
+    public function getWebPath(): string;
 }

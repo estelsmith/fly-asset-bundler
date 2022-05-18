@@ -67,4 +67,27 @@ class SourceBundle implements SourceBundleInterface
     {
         return $this->files;
     }
+
+    public function getDiskPath(): string
+    {
+        $outputFilename = $this->getOutputFilenameStrategy()->getFilename($this);
+
+        return sprintf(
+            '%s%s%s',
+            rtrim($this->getOutputDirectory(), DIRECTORY_SEPARATOR),
+            DIRECTORY_SEPARATOR,
+            $outputFilename
+        );
+    }
+
+    public function getWebPath(): string
+    {
+        $outputFilename = $this->getOutputFilenameStrategy()->getFilename($this);
+
+        return sprintf(
+            '%s/%s',
+            rtrim($this->getWebDirectory(), '/'),
+            $outputFilename
+        );
+    }
 }

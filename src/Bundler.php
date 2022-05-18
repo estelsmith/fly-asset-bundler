@@ -19,20 +19,8 @@ class Bundler implements BundlerInterface
             $outputs[] = $content;
         }
 
-        $outputFilename = $sourceBundle->getOutputFilenameStrategy()->getFilename($sourceBundle);
-
-        $diskPath = sprintf(
-            '%s%s%s',
-            rtrim($sourceBundle->getOutputDirectory(), DIRECTORY_SEPARATOR),
-            DIRECTORY_SEPARATOR,
-            $outputFilename
-        );
-
-        $webPath = sprintf(
-            '%s/%s',
-            rtrim($sourceBundle->getWebDirectory(), '/'),
-            $outputFilename
-        );
+        $diskPath = $sourceBundle->getDiskPath();
+        $webPath = $sourceBundle->getWebPath();
 
         if (!file_exists($diskPath)) {
             file_put_contents(
