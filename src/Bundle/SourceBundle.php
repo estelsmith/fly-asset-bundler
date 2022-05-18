@@ -2,6 +2,8 @@
 
 namespace EstelSmith\FlyAssetBundler\Bundle;
 
+use EstelSmith\FlyAssetBundler\Bundle\SourceBundle\OutputFilenameStrategyInterface;
+
 class SourceBundle implements SourceBundleInterface
 {
     /**
@@ -15,9 +17,9 @@ class SourceBundle implements SourceBundleInterface
     private $webDirectory;
 
     /**
-     * @var string
+     * @var OutputFilenameStrategyInterface
      */
-    private $outputFilename;
+    private $outputFilenameStrategy;
 
     /**
      * @var array<string>
@@ -27,19 +29,19 @@ class SourceBundle implements SourceBundleInterface
     /**
      * @param string $outputDirectory
      * @param string $webDirectory
-     * @param string $outputFilename
+     * @param OutputFilenameStrategyInterface $outputFilenameStrategy
      * @param array<string> $files
      */
     public function __construct(
         string $outputDirectory,
         string $webDirectory,
-        string $outputFilename,
+        OutputFilenameStrategyInterface $outputFilenameStrategy,
         array $files
     )
     {
         $this->outputDirectory = $outputDirectory;
         $this->webDirectory = $webDirectory;
-        $this->outputFilename = $outputFilename;
+        $this->outputFilenameStrategy = $outputFilenameStrategy;
         $this->files = $files;
     }
 
@@ -53,9 +55,9 @@ class SourceBundle implements SourceBundleInterface
         return $this->webDirectory;
     }
 
-    public function getOutputFilename(): string
+    public function getOutputFilenameStrategy(): OutputFilenameStrategyInterface
     {
-        return $this->outputFilename;
+        return $this->outputFilenameStrategy;
     }
 
     /**

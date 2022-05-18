@@ -18,17 +18,19 @@ class Bundler implements BundlerInterface
             $outputs[] = $content;
         }
 
+        $outputFilename = $sourceBundle->getOutputFilenameStrategy()->getFilename($sourceBundle);
+
         $diskPath = sprintf(
             '%s%s%s',
             rtrim($sourceBundle->getOutputDirectory(), DIRECTORY_SEPARATOR),
             DIRECTORY_SEPARATOR,
-            $sourceBundle->getOutputFilename()
+            $outputFilename
         );
 
         $webPath = sprintf(
             '%s/%s',
             rtrim($sourceBundle->getWebDirectory(), '/'),
-            $sourceBundle->getOutputFilename()
+            $outputFilename
         );
 
         file_put_contents(
