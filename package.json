@@ -1,0 +1,14 @@
+{
+    "name": "fly-asset-bundler",
+    "version": "1.0.0",
+    "main": "index.js",
+    "author": "Estel Smith <estel.smith@gmail.com>",
+    "license": "MIT",
+    "private": true,
+    "scripts": {
+        "app:composer": "yarn dev:exec composer",
+        "app:php": "yarn dev:exec php",
+        "dev:build": "docker build -t fly-asset-bundler:latest .",
+        "dev:exec": "docker run -it --rm -v `pwd`:/data fly-asset-bundler"
+    }
+}
